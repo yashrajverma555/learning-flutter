@@ -1,0 +1,25 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Secrets & Local Environment
+*.env
+*.env.*
+*.local
+credentials.json
+google-services.json
+GoogleService-Info.plist
+
+# Temporary & Build files
+*.log
+*.tmp
+*.bak
+/build/
+.dart_tool/
+.packages
+pubspec.lock
