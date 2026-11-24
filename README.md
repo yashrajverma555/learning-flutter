@@ -21,7 +21,7 @@ By the end of this 12-week program, the objective is to independently plan, arch
 
 | Week | Domain & Focus | Status | Mandatory Weekly Project | Approved Date |
 |:---:|:---|:---:|:---|:---:|
-| **01** | [Dart Fundamentals & Asynchronous Programming](ROADMAP.md#week-1-dart-fundamentals--asynchronous-programming) | `Not Started` | API Data Fetching Application | — |
+| **01** | [Dart Fundamentals & Asynchronous Programming](ROADMAP.md#week-1-dart-fundamentals--asynchronous-programming) | `Learning` | API Data Fetching Application | Part 1 Approved (PDF pp. 4-5) |
 | **02** | [Flutter UI & Advanced Frontend Engineering](ROADMAP.md#week-2-flutter-ui--advanced-frontend-engineering) | `Not Started` | Responsive E-commerce Frontend | — |
 | **03** | [Navigation, Deep Linking & Declarative Routing](ROADMAP.md#week-3-navigation-deep-linking--declarative-routing) | `Not Started` | Multi-Screen Shopping Application | — |
 | **04** | [Reactive State Management Using BLoC](ROADMAP.md#week-4-reactive-state-management-using-bloc) | `Not Started` | Shopping Cart Application Using BLoC | — |
