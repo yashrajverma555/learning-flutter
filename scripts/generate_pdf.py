@@ -2,9 +2,9 @@
 """
 LEARNING_FLUTTER_NOTES.pdf Generator
 ------------------------------------
-Generates a beautifully styled, professional PDF handbook for Flutter & Dart learning.
-Includes custom running headers, footers with 'Page X of Y', styled callout boxes,
-table of contents, and modular support for approved chapters.
+Compiles the master 12-Week Flutter & Full-Stack Reference Handbook.
+Includes cover page, 12-week comprehensive roadmap table of contents with status badges,
+pedagogical engineering framework, and dynamically appended approved chapters.
 """
 
 import os
@@ -24,10 +24,7 @@ from reportlab.pdfgen import canvas
 
 
 class NumberedCanvas(canvas.Canvas):
-    """
-    Two-pass canvas to dynamically compute and print total page count 'Page X of Y'
-    and add consistent running headers and footers.
-    """
+    """Two-pass canvas for dynamic total page count and consistent headers/footers."""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._saved_page_states = []
@@ -45,7 +42,7 @@ class NumberedCanvas(canvas.Canvas):
         super().save()
 
     def draw_page_decorations(self, total_pages):
-        # Don't draw header/footer on cover page (page 1)
+        # Omit header and footer on cover page
         if self._pageNumber == 1:
             return
 
@@ -54,10 +51,10 @@ class NumberedCanvas(canvas.Canvas):
         self.setFillColor(colors.HexColor("#02569B"))
 
         # Running Header
-        self.drawString(54, letter[1] - 34, "FLUTTER & DART ENGINEERING MASTER REFERENCE")
+        self.drawString(54, letter[1] - 34, "12-WEEK FLUTTER FULL-STACK ENGINEERING HANDBOOK")
         self.setFont("Helvetica", 7.5)
         self.setFillColor(colors.HexColor("#64748B"))
-        self.drawRightString(letter[0] - 54, letter[1] - 34, "Yash Raj Verma | Learning Handbook")
+        self.drawRightString(letter[0] - 54, letter[1] - 34, "Yash Raj Verma | Learning Master Notes")
         self.setStrokeColor(colors.HexColor("#CBD5E1"))
         self.setLineWidth(0.75)
         self.line(54, letter[1] - 40, letter[0] - 54, letter[1] - 40)
@@ -66,7 +63,7 @@ class NumberedCanvas(canvas.Canvas):
         self.line(54, 46, letter[0] - 54, 46)
         page_str = f"Page {self._pageNumber} of {total_pages}"
         self.drawRightString(letter[0] - 54, 34, page_str)
-        self.drawString(54, 34, "STATUS: INITIALIZED — AWAITING FIRST APPROVED TOPIC")
+        self.drawString(54, 34, "STATUS: 12-WEEK BLUEPRINT INITIALIZED — AWAITING WEEK 1 APPROVAL")
         self.restoreState()
 
 
@@ -85,7 +82,7 @@ def create_initial_pdf(output_path):
     styles = getSampleStyleSheet()
 
     # Custom palette
-    primary_blue = colors.HexColor("#02569B")    # Flutter Primary Navy
+    primary_blue = colors.HexColor("#02569B")    # Flutter Deep Navy
     secondary_blue = colors.HexColor("#0175C2")  # Flutter Mid Blue
     accent_blue = colors.HexColor("#0288D1")
     dark_text = colors.HexColor("#0F172A")
@@ -100,8 +97,8 @@ def create_initial_pdf(output_path):
         'CoverTitle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=27,
-        leading=33,
+        fontSize=26,
+        leading=32,
         textColor=primary_blue,
     )
 
@@ -109,8 +106,8 @@ def create_initial_pdf(output_path):
         'CoverSubtitle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=12,
-        leading=17,
+        fontSize=11.5,
+        leading=16.5,
         textColor=secondary_blue,
     )
 
@@ -118,30 +115,30 @@ def create_initial_pdf(output_path):
         'Heading1Custom',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=17,
-        leading=21,
+        fontSize=15,
+        leading=19,
         textColor=primary_blue,
         spaceBefore=0,
-        spaceAfter=6,
+        spaceAfter=5,
     )
 
     h2_style = ParagraphStyle(
         'Heading2Custom',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=13,
-        leading=17,
+        fontSize=12,
+        leading=16,
         textColor=secondary_blue,
-        spaceBefore=14,
-        spaceAfter=6,
+        spaceBefore=10,
+        spaceAfter=4,
     )
 
     body_style = ParagraphStyle(
         'BodyCustom',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=9,
-        leading=13.5,
+        fontSize=8.5,
+        leading=12.5,
         textColor=dark_text,
     )
 
@@ -155,8 +152,8 @@ def create_initial_pdf(output_path):
         'BadgePending',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=8,
-        leading=10,
+        fontSize=7.5,
+        leading=9.5,
         textColor=colors.HexColor("#B45309"),
         alignment=1,
     )
@@ -166,228 +163,229 @@ def create_initial_pdf(output_path):
     # ==========================================
     # PAGE 1: COVER PAGE
     # ==========================================
-    story.append(Spacer(1, 35))
+    story.append(Spacer(1, 25))
     
     # Tag
     tag_p = Paragraph(
-        "<font color='#0288D1'><b>PROJECT: LEARNING FLUTTER • MASTER ARCHIVE</b></font>",
+        "<font color='#0288D1'><b>PROJECT: 12-WEEK FULL-STACK FLUTTER ROADMAP</b></font>",
         ParagraphStyle('TagStyle', parent=styles['Normal'], fontName='Helvetica-Bold', fontSize=10, leading=12)
     )
     story.append(tag_p)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
-    # Main Title
-    story.append(Paragraph("Flutter &amp; Dart Engineering<br/>Personal Reference Handbook", cover_title_style))
-    story.append(Spacer(1, 10))
+    # Title
+    story.append(Paragraph("12-Week Flutter &amp; Full-Stack<br/>Engineering Master Handbook", cover_title_style))
+    story.append(Spacer(1, 8))
 
     # Subtitle
     story.append(Paragraph(
-        "A structured, production-grade learning manual covering syntax, widget lifecycle, architecture patterns, state management, and real-world implementations.",
+        "A rigorous, production-grade syllabus covering Dart internals, advanced Flutter UI, BLoC state management, "
+        "Supabase, PostgreSQL, Python, FastAPI, Clean Architecture, Docker, and CI/CD deployment.",
         cover_subtitle_style
     ))
-    story.append(Spacer(1, 18))
+    story.append(Spacer(1, 14))
 
-    story.append(HRFlowable(width="100%", thickness=2.5, color=primary_blue, spaceBefore=0, spaceAfter=18))
+    story.append(HRFlowable(width="100%", thickness=2.5, color=primary_blue, spaceBefore=0, spaceAfter=14))
 
-    # Prominent Status Notice Box
+    # Status Notice Box
     notice_text = (
-        "<b>DOCUMENT STATUS: INITIALIZED — AWAITING FIRST APPROVED TOPIC</b><br/>"
-        "This master reference manual is strictly synchronized with active learning progress. "
-        "Per our teaching methodology, chapters, syntax cheat-sheets, and verified code patterns are "
-        "compiled into this document <b>only after explicit review and approval</b>.<br/><br/>"
-        "<i>Currently, no learning chapters have been approved yet. The manual is primed and ready to "
-        "receive Topic 1.</i>"
+        "<b>ROADMAP BLUEPRINT INITIALIZED — AWAITING WEEK 1 APPROVAL</b><br/>"
+        "This master documentation manual is strictly updated following our 12-week structured curriculum. "
+        "Each week concludes with an assessment, practical project delivery, and <b>explicit student approval</b> "
+        "before content and code patterns are compiled into this permanent document.<br/><br/>"
+        "<i>Currently, no learning chapters have been approved yet. The manual is primed for Week 1: "
+        "Dart Fundamentals &amp; Asynchronous Programming.</i>"
     )
-    notice_p = Paragraph(notice_text, ParagraphStyle('NoticeP', parent=body_style, fontSize=9.5, leading=14.5, textColor=colors.HexColor("#1E3A8A")))
+    notice_p = Paragraph(notice_text, ParagraphStyle('NoticeP', parent=body_style, fontSize=9, leading=13.5, textColor=colors.HexColor("#1E3A8A")))
     
     notice_table = Table([[notice_p]], colWidths=[letter[0] - 108])
     notice_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), alert_bg),
         ('BOX', (0, 0), (-1, -1), 1.5, alert_border),
-        ('PADDING', (0, 0), (-1, -1), 12),
+        ('PADDING', (0, 0), (-1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ]))
     story.append(notice_table)
-    story.append(Spacer(1, 25))
+    story.append(Spacer(1, 16))
 
     # Metadata Card
     meta_data = [
-        [Paragraph("<b>Target Audience:</b>", body_bold), Paragraph("Intermediate Developer transitioning to Production-Ready Flutter", body_style)],
         [Paragraph("<b>Author / Learner:</b>", body_bold), Paragraph("Yash Raj Verma", body_style)],
+        [Paragraph("<b>Target Stack:</b>", body_bold), Paragraph("Flutter, BLoC, Supabase, PostgreSQL, Python, FastAPI, Docker", body_style)],
         [Paragraph("<b>GitHub Repository:</b>", body_bold), Paragraph("https://github.com/yashrajverma555/learning-flutter", body_style)],
-        [Paragraph("<b>Ultimate Objective:</b>", body_bold), Paragraph("Independently architect and ship production-ready Flutter applications", body_style)],
-        [Paragraph("<b>Version:</b>", body_bold), Paragraph("1.0.0 (Initial Framework)", body_style)],
-        [Paragraph("<b>Review Policy:</b>", body_bold), Paragraph("Strict explicit learner approval required before any additions", body_style)],
+        [Paragraph("<b>Curriculum Length:</b>", body_bold), Paragraph("Strictly 12 Weeks (1 Mandatory Production Project per Week)", body_style)],
+        [Paragraph("<b>Terminal Objective:</b>", body_bold), Paragraph("Independently architect, secure, test, containerize, and deploy full-stack apps", body_style)],
+        [Paragraph("<b>Documentation Rule:</b>", body_bold), Paragraph("Strict explicit learner review and sign-off before compiling updates", body_style)],
     ]
-    meta_table = Table(meta_data, colWidths=[130, letter[0] - 108 - 130])
+    meta_table = Table(meta_data, colWidths=[125, letter[0] - 108 - 125])
     meta_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), card_bg),
         ('BOX', (0, 0), (-1, -1), 1, card_border),
         ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#E2E8F0")),
-        ('PADDING', (0, 0), (-1, -1), 7.5),
+        ('PADDING', (0, 0), (-1, -1), 6),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ]))
     story.append(meta_table)
 
-    story.append(Spacer(1, 35))
-    story.append(Paragraph("<i>Compiled dynamically via automated PDF pipeline • notes/LEARNING_FLUTTER_NOTES.pdf</i>", ParagraphStyle('FootMeta', parent=body_style, textColor=muted_text, fontSize=8, alignment=1)))
+    story.append(Spacer(1, 24))
+    story.append(Paragraph("<i>Automated Master Notes Builder • notes/LEARNING_FLUTTER_NOTES.pdf</i>", ParagraphStyle('FootMeta', parent=body_style, textColor=muted_text, fontSize=8, alignment=1)))
 
     story.append(PageBreak())
 
     # ==========================================
-    # PAGE 2: TABLE OF CONTENTS & ROADMAP
+    # PAGE 2: 12-WEEK TABLE OF CONTENTS & ROADMAP
     # ==========================================
-    story.append(Paragraph("Table of Contents &amp; Curriculum Roadmap", h1_style))
+    story.append(Paragraph("12-Week Full-Stack Curriculum &amp; Project Roadmap", h1_style))
     story.append(Paragraph(
-        "The curriculum is arranged logically from modern Dart language features to full production architecture. Each chapter will contain dedicated sections for syntax to memorize, common gotchas, and enterprise code examples.",
+        "Each week represents an intensive engineering module with concrete deliverables and a mandatory project. "
+        "Upon explicit approval, the pending status will transition to 'Approved' and the detailed chapter will be compiled below.",
         body_style
     ))
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
     toc_data = [
         [
-            Paragraph("<b>Chapter / Module</b>", body_bold),
-            Paragraph("<b>Core Focus Area &amp; Key Deliverables</b>", body_bold),
+            Paragraph("<b>Wk</b>", body_bold),
+            Paragraph("<b>Module &amp; Core Concepts</b>", body_bold),
+            Paragraph("<b>Mandatory Weekly Project</b>", body_bold),
             Paragraph("<b>Status</b>", body_bold),
         ],
         [
-            Paragraph("<b>Ch 1. Modern Dart &amp; OOP</b>", body_style),
-            Paragraph("Null safety idioms, mixins, factory constructors, copyWith pattern, sealed classes", body_style),
+            Paragraph("<b>01</b>", body_style),
+            Paragraph("<b>Dart &amp; Async:</b> Types, OOP, streams, event loop, JSON serialization", body_style),
+            Paragraph("API Data Fetching Application", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 2. Widget Internals &amp; Lifecycle</b>", body_style),
-            Paragraph("Stateless vs Stateful, Element &amp; RenderObject trees, BuildContext, GlobalKey", body_style),
+            Paragraph("<b>02</b>", body_style),
+            Paragraph("<b>Flutter UI &amp; Slivers:</b> Tree internals, lifecycle, responsive layouts, slivers", body_style),
+            Paragraph("Responsive E-commerce Frontend", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 3. Responsive Layouts &amp; Slivers</b>", body_style),
-            Paragraph("BoxConstraints, Flex rules, CustomScrollView, Slivers, LayoutBuilder", body_style),
+            Paragraph("<b>03</b>", body_style),
+            Paragraph("<b>Navigation &amp; Routing:</b> Navigator 1.0, GoRouter, deep links, route guards", body_style),
+            Paragraph("Multi-Screen Shopping Application", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 4. Navigation &amp; Routing</b>", body_style),
-            Paragraph("Navigator 2.0, GoRouter, deep links, route guards, shell routes", body_style),
+            Paragraph("<b>04</b>", body_style),
+            Paragraph("<b>BLoC State Management:</b> Events, states, Cubit, BlocConsumer, Equatable", body_style),
+            Paragraph("Shopping Cart Application Using BLoC", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 5. Form Handling &amp; Validation</b>", body_style),
-            Paragraph("TextEditingController lifecycle, FormField, FocusNode, custom formatters", body_style),
+            Paragraph("<b>05</b>", body_style),
+            Paragraph("<b>Supabase &amp; DB Security:</b> PostgreSQL modeling, Supabase Auth, Storage, RLS", body_style),
+            Paragraph("Auth &amp; User Notes App (with RLS)", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 6. Modern State Management</b>", body_style),
-            Paragraph("Riverpod / Bloc patterns, immutability, selectors, side-effect isolation", body_style),
+            Paragraph("<b>06</b>", body_style),
+            Paragraph("<b>Python &amp; FastAPI:</b> Pydantic v2, async endpoints, SQLAlchemy 2.0, Alembic", body_style),
+            Paragraph("Task Management REST API", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 7. Networking &amp; API Integration</b>", body_style),
-            Paragraph("Dio/HTTP clients, interceptors, error mapping, JSON serialization with Freezed", body_style),
+            Paragraph("<b>07</b>", body_style),
+            Paragraph("<b>Full-Stack Integration:</b> Dio interceptors, Supabase JWT verification in FastAPI", body_style),
+            Paragraph("Full-Stack Task Management App", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 8. Local Persistence &amp; Firebase</b>", body_style),
-            Paragraph("Secure storage, Hive / Isar, Firebase Auth, Firestore, Cloud Messaging", body_style),
+            Paragraph("<b>08</b>", body_style),
+            Paragraph("<b>Clean Architecture:</b> SOLID, Domain/Data/Presentation layers, Use Cases", body_style),
+            Paragraph("Clean Architecture Flutter App", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Ch 9. Architecture &amp; Performance</b>", body_style),
-            Paragraph("Clean architecture, repository pattern, DevTools profiling, leak prevention", body_style),
+            Paragraph("<b>09</b>", body_style),
+            Paragraph("<b>Advanced Backend &amp; DB:</b> Query optimization, Redis caching, WebSockets", body_style),
+            Paragraph("Order Management &amp; Events Backend", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
         [
-            Paragraph("<b>Appendix: Quick Syntax Reference</b>", body_style),
-            Paragraph("High-frequency widget properties, constructor parameters, common error fixes", body_style),
+            Paragraph("<b>10</b>", body_style),
+            Paragraph("<b>Testing &amp; Security:</b> Pytest, BLoC tests, Golden tests, OWASP API Top 10", body_style),
+            Paragraph("Security-Audited &amp; Tested REST API", body_style),
+            Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
+        ],
+        [
+            Paragraph("<b>11</b>", body_style),
+            Paragraph("<b>DevOps &amp; Cloud:</b> Docker Compose, GitHub Actions CI/CD, Nginx SSL reverse proxy", body_style),
+            Paragraph("Dockerized Full-Stack Deployment", body_style),
+            Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
+        ],
+        [
+            Paragraph("<b>12</b>", body_style),
+            Paragraph("<b>Capstone:</b> Complete Full-Stack E-commerce with UPI, Admin, Real-time &amp; Docker", body_style),
+            Paragraph("Production Full-Stack E-commerce Platform", body_style),
             Paragraph("<font color='#D97706'>⏳ Pending</font>", badge_pending),
         ],
     ]
 
-    toc_table = Table(toc_data, colWidths=[150, 260, 94])
+    toc_table = Table(toc_data, colWidths=[24, 235, 175, 70])
     toc_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#E2E8F0")),
         ('BOX', (0, 0), (-1, -1), 1, card_border),
         ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#CBD5E1")),
-        ('PADDING', (0, 0), (-1, -1), 6.5),
+        ('PADDING', (0, 0), (-1, -1), 4.2),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor("#F8FAFC")]),
     ]))
     story.append(toc_table)
 
-    story.append(Spacer(1, 14))
-
-    # Notes on updates
-    update_note = Paragraph(
-        "<i>Note: As topics are covered and explicitly approved, the pending badges above will transition "
-        "to 'Approved' with exact page hyperlinks, and the corresponding detailed chapters will expand below.</i>",
-        ParagraphStyle('UpdateNote', parent=body_style, fontSize=8, textColor=muted_text)
-    )
-    story.append(update_note)
-
     story.append(PageBreak())
 
     # ==========================================
-    # PAGE 3: METHODOLOGY & HOW TO USE
+    # PAGE 3: METHODOLOGY & PROGRESS PROTOCOL
     # ==========================================
-    story.append(Paragraph("Pedagogical Methodology &amp; Documentation Rules", h1_style))
+    story.append(Paragraph("Weekly Learning &amp; Verification Protocol", h1_style))
     story.append(Paragraph(
-        "This reference manual adheres to a strict 6-step engineering methodology designed for intermediate developers. "
-        "The goal is not rote memorization of concepts you already know, but rapid retrieval of exact syntax, patterns, and production techniques.",
+        "To guarantee independent, production-level engineering capability, every single week strictly follows this 8-point cycle:",
         body_style
     ))
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
-    method_data = [
-        [Paragraph("<b>Step 1: Understand the Topic</b>", body_bold), Paragraph("Briefly establish what we are learning and why it is critical in production Flutter apps.", body_style)],
-        [Paragraph("<b>Step 2: Teach the Concept</b>", body_bold), Paragraph("Deconstruct internal workings, constructor properties, parameter types, and differences from similar widgets/APIs.", body_style)],
-        [Paragraph("<b>Step 3: Practical Code Examples</b>", body_bold), Paragraph("Provide clean, idiomatic code snippets. Highlight must-memorize syntax and common errors with their fixes.", body_style)],
-        [Paragraph("<b>Step 4: Real-World Use Cases</b>", body_bold), Paragraph("Ground every concept in practical scenarios (e-commerce, authentication, real-time dashboards, payment flows).", body_style)],
-        [Paragraph("<b>Step 5: Test Understanding</b>", body_bold), Paragraph("Targeted coding questions and debugging exercises without revealing solutions upfront.", body_style)],
-        [Paragraph("<b>Step 6: Explicit Approval</b>", body_bold), Paragraph("Present a structured summary for approval. Only upon explicit confirmation is content compiled into this PDF and pushed to GitHub.", body_style)],
+    protocol_data = [
+        [Paragraph("<b>1. Overview &amp; Assessment:</b>", body_bold), Paragraph("Define core deliverables and evaluate prior experience to skip trivial basics.", body_style)],
+        [Paragraph("<b>2. Deep-Dive Sessions:</b>", body_bold), Paragraph("Break topics into bite-sized concepts. Dissect syntax, internal architecture, and gotchas.", body_style)],
+        [Paragraph("<b>3. Practical Exercises:</b>", body_bold), Paragraph("Targeted coding drills to anchor muscle memory and critical signatures.", body_style)],
+        [Paragraph("<b>4. Mandatory Project:</b>", body_bold), Paragraph("Guided end-of-week production project with explicit folder structure and checklist.", body_style)],
+        [Paragraph("<b>5. Code Review:</b>", body_bold), Paragraph("Rigorous evaluation of code quality, architecture, error handling, and performance.", body_style)],
+        [Paragraph("<b>6. Revision &amp; Assessment:</b>", body_bold), Paragraph("Concept verification questions before concluding the week's syllabus.", body_style)],
+        [Paragraph("<b>7. Explicit Approval:</b>", body_bold), Paragraph("Structured summary presented to learner. Added to PDF strictly upon confirmation.", body_style)],
+        [Paragraph("<b>8. GitHub Progress Sync:</b>", body_bold), Paragraph("Push clean, tested implementations and updated PDF with meaningful commits.", body_style)],
     ]
-    method_table = Table(method_data, colWidths=[140, letter[0] - 108 - 140])
-    method_table.setStyle(TableStyle([
+    protocol_table = Table(protocol_data, colWidths=[140, letter[0] - 108 - 140])
+    protocol_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), card_bg),
         ('BOX', (0, 0), (-1, -1), 1, card_border),
         ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#E2E8F0")),
-        ('PADDING', (0, 0), (-1, -1), 7),
+        ('PADDING', (0, 0), (-1, -1), 5.5),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ]))
-    story.append(method_table)
+    story.append(protocol_table)
 
     story.append(Spacer(1, 14))
 
-    story.append(Paragraph("Documentation Standards for Approved Chapters", h2_style))
-    story.append(Paragraph(
-        "Every approved chapter included in this PDF must satisfy the following criteria:<br/>"
-        "• <b>Concise yet complete:</b> No filler theory; straight to mechanics and implementation.<br/>"
-        "• <b>Syntax Callouts:</b> Distinct formatting for properties that are easily forgotten.<br/>"
-        "• <b>Common Pitfalls Table:</b> Side-by-side contrast of faulty patterns vs recommended patterns.<br/>"
-        "• <b>Modern Standards:</b> Strictly uses the latest Flutter 3.x and Dart 3.x null-safe idioms.",
-        body_style
-    ))
-
-    story.append(Spacer(1, 18))
-
-    # Action Callout Box
-    c1_box = [
+    # Week 1 Callout Box
+    w1_box = [
         [Paragraph(
-            "<b>Ready for Your First Topic!</b><br/>"
-            "To begin Chapter 1, provide any of the following:<br/>"
-            "1. A Flutter / Dart concept you want to master or refresh (e.g., BuildContext, GoRouter, Riverpod).<br/>"
-            "2. A YouTube tutorial link or video topic.<br/>"
-            "3. A specific coding problem, bug, or implementation pattern.<br/>"
-            "4. A code snippet you would like to thoroughly understand.<br/><br/>"
-            "We will deconstruct it step-by-step, verify your mastery, and compile your first official chapter!",
-            ParagraphStyle('C1Box', parent=body_style, fontSize=9, leading=13.5, textColor=colors.HexColor("#065F46"))
+            "<b>Ready for Week 1: Dart Fundamentals &amp; Asynchronous Programming</b><br/>"
+            "• <b>Objective:</b> Master modern Dart types, null-safety idioms, OOP patterns, and async mechanics (Event Loop, Futures, Streams).<br/>"
+            "• <b>Weekly Project:</b> API Data Fetching Application with robust error handling and model deserialization.<br/><br/>"
+            "<i>Upon your explicit approval of this 12-week roadmap, we will initiate Week 1!</i>",
+            ParagraphStyle('W1Box', parent=body_style, fontSize=8.5, leading=13, textColor=colors.HexColor("#065F46"))
         )]
     ]
-    c1_table = Table(c1_box, colWidths=[letter[0] - 108])
-    c1_table.setStyle(TableStyle([
+    w1_table = Table(w1_box, colWidths=[letter[0] - 108])
+    w1_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor("#ECFDF5")),
         ('BOX', (0, 0), (-1, -1), 1.5, colors.HexColor("#10B981")),
-        ('PADDING', (0, 0), (-1, -1), 10),
+        ('PADDING', (0, 0), (-1, -1), 9),
     ]))
-    story.append(c1_table)
+    story.append(w1_table)
 
     doc.build(story, canvasmaker=NumberedCanvas)
     print(f"Successfully generated initial PDF at: {output_path}")

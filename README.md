@@ -1,19 +1,41 @@
-# Learning Flutter & Dart 🚀
+# Flutter & Full-Stack Engineering Roadmap (12 Weeks) 🚀
 
-> **My personal Flutter and Dart learning journey, containing organized notes, practical examples, syntax references, and implementations.**
+> **A structured, intensive 12-week journey from intermediate Flutter UI to production-ready Full-Stack Software Engineering.**  
+> Mastering Flutter, Dart, BLoC, Supabase, PostgreSQL, Python, FastAPI, Clean Architecture, Docker, and DevOps.
 
 ---
 
-## 📌 About This Repository
+## 🎯 Learning Objectives
 
-This repository documents my structured path to mastering **Flutter** and **Dart** for building production-ready, high-performance mobile and cross-platform applications.
+By the end of this 12-week program, the objective is to independently plan, architect, build, secure, test, containerize, and deploy full-stack applications with production standards:
+- **Mobile Client:** Flutter 3.x, Dart 3.x, reactive BLoC state management, declarative GoRouter, Clean Architecture.
+- **Backend Services:** Python 3.12+, asynchronous FastAPI, Pydantic v2, SQLAlchemy 2.0, Alembic migrations.
+- **Database & Auth:** Supabase, PostgreSQL, Row Level Security (RLS), Supabase Storage, Redis caching.
+- **Software Architecture:** SOLID principles, Design Patterns, Clean Architecture (Domain, Data, Presentation layers).
+- **Quality & Security:** Unit, Widget, Integration & Pytest test suites, OWASP Top 10 hardening, rate limiting.
+- **DevOps & Cloud:** Docker, Docker Compose, GitHub Actions CI/CD, Nginx SSL reverse proxy, production deployment.
 
-Rather than starting from absolute scratch, this repository focuses on:
-- Deepening core Flutter & Dart architecture and internal mechanisms.
-- Memorizing critical syntax, widget properties, and constructor arguments.
-- Mastering modern state management patterns, API integration, and persistence.
-- Eliminating common pitfalls and bad practices.
-- Writing clean, maintainable, scalable production code.
+---
+
+## 📊 12-Week Progress Tracker
+
+| Week | Domain & Focus | Status | Mandatory Weekly Project | Approved Date |
+|:---:|:---|:---:|:---|:---:|
+| **01** | [Dart Fundamentals & Asynchronous Programming](ROADMAP.md#week-1-dart-fundamentals--asynchronous-programming) | `Not Started` | API Data Fetching Application | — |
+| **02** | [Flutter UI & Advanced Frontend Engineering](ROADMAP.md#week-2-flutter-ui--advanced-frontend-engineering) | `Not Started` | Responsive E-commerce Frontend | — |
+| **03** | [Navigation, Deep Linking & Declarative Routing](ROADMAP.md#week-3-navigation-deep-linking--declarative-routing) | `Not Started` | Multi-Screen Shopping Application | — |
+| **04** | [Reactive State Management Using BLoC](ROADMAP.md#week-4-reactive-state-management-using-bloc) | `Not Started` | Shopping Cart Application Using BLoC | — |
+| **05** | [Supabase, PostgreSQL & Database Security (RLS)](ROADMAP.md#week-5-supabase-postgresql--database-security-rls) | `Not Started` | Auth & User Notes Management Application | — |
+| **06** | [Python & High-Performance FastAPI Backend](ROADMAP.md#week-6-python--high-performance-fastapi-backend) | `Not Started` | Task Management REST API with PostgreSQL | — |
+| **07** | [Full-Stack Integration: Flutter + FastAPI + Supabase](ROADMAP.md#week-7-full-stack-integration-flutter--fastapi--supabase) | `Not Started` | Full-Stack Task Management Application | — |
+| **08** | [Software Architecture, Design Principles & Clean Arch](ROADMAP.md#week-8-software-architecture-design-principles--clean-arch) | `Not Started` | Clean Architecture Flutter Application | — |
+| **09** | [Advanced Database Engineering & Backend Systems](ROADMAP.md#week-9-advanced-database-engineering--backend-systems) | `Not Started` | Order Management & Event-Driven Backend | — |
+| **10** | [Testing, App Security, OWASP & Performance](ROADMAP.md#week-10-testing-app-security-owasp--performance) | `Not Started` | Security-Audited and Tested REST API | — |
+| **11** | [Git, Docker, CI/CD Pipelines & Cloud Deployment](ROADMAP.md#week-11-git-docker-cicd-pipelines--cloud-deployment) | `Not Started` | Dockerized Full-Stack Deployment | — |
+| **12** | [Capstone: Production E-commerce Platform](ROADMAP.md#week-12-capstone-production-e-commerce-platform) | `Not Started` | Full-Stack Production E-commerce App | — |
+
+*Status definitions: `Not Started` ➔ `Learning` ➔ `Practicing` ➔ `Project in Progress` ➔ `Completed`*  
+*A week is marked `Completed` only after concepts, exercises, weekly project, knowledge assessment, and explicit PDF documentation approval are verified.*
 
 ---
 
@@ -22,75 +44,58 @@ Rather than starting from absolute scratch, this repository focuses on:
 ```text
 learning-flutter/
 │
-├── README.md                          # Repository overview & learning tracker
+├── README.md                          # Repository overview & 12-week tracker
+├── ROADMAP.md                         # Complete 12-week comprehensive syllabus
 │
 ├── notes/
 │   └── LEARNING_FLUTTER_NOTES.pdf     # Continuously updated master PDF reference notes
 │
-├── dart/
-│   ├── basics/                        # Dart fundamentals, collections, control flow
-│   ├── oop/                           # Classes, mixins, inheritance, abstract classes, interfaces
-│   └── advanced/                      # Generics, async/await, Streams, Isolates, null safety
-│
-├── flutter/
-│   ├── widgets/                       # Core StatelessWidget & StatefulWidget, lifecycle
-│   ├── layouts/                       # Flex, Column, Row, Stack, Wrap, CustomScrollView
-│   ├── navigation/                    # Navigator 1.0/2.0, GoRouter, deep linking
-│   ├── forms/                         # Form validation, controllers, input formatters
-│   ├── state_management/             # Provider, Riverpod, Bloc/Cubit
-│   ├── api_integration/               # HTTP, Dio, REST APIs, JSON serialization
-│   ├── firebase/                      # Auth, Firestore, Cloud Storage, Push notifications
-│   └── advanced/                      # Custom painters, animations, performance profiling
-│
-├── practical_examples/                # Real-world mini-apps & production-ready modules
+├── week-01-dart/                      # Dart fundamentals, OOP, streams & async
+├── week-02-flutter-ui/                # Advanced widgets, slivers & responsive UI
+├── week-03-navigation/                # Navigator 1.0/2.0, GoRouter, deep links
+├── week-04-bloc/                      # Reactive state management with BLoC
+├── week-05-supabase/                  # PostgreSQL, RLS, Supabase Auth & Storage
+├── week-06-fastapi/                   # Python, FastAPI, SQLAlchemy & Alembic
+├── week-07-integration/               # Full-stack Flutter + FastAPI + Supabase
+├── week-08-architecture/              # SOLID, Clean Architecture & Design Patterns
+├── week-09-advanced-backend/          # Redis caching, WebSockets, background tasks
+├── week-10-testing-security/          # Flutter & Pytest suites, OWASP hardening
+├── week-11-devops/                    # Docker, Docker Compose, CI/CD & Nginx
+├── week-12-final-project/             # Capstone: Full-Stack E-commerce Platform
 │
 ├── resources/
-│   └── learning_resources.md          # Curated documentation, cheat sheets & video logs
+│   └── learning_resources.md          # Curated documentation, cheat sheets & video index
 │
 └── scripts/
-    └── generate_pdf.py                # Automated builder for LEARNING_FLUTTER_NOTES.pdf
+    └── generate_pdf.py                # Automated PDF builder for LEARNING_FLUTTER_NOTES.pdf
 ```
 
 ---
 
 ## 📖 Master Learning Notes (PDF)
 
-The master reference manual is located at:
+The master reference manual is continuously compiled and synchronized:  
 📄 **[`notes/LEARNING_FLUTTER_NOTES.pdf`](notes/LEARNING_FLUTTER_NOTES.pdf)**
 
-### Documentation Standards:
-- **Strict Approval Process:** No topic is committed or compiled into the PDF without explicit review and approval.
-- **Syntax Focus:** Clear highlights of constructor parameters, return types, and code idioms.
-- **Common Mistakes:** Side-by-side contrast of buggy vs. production-quality implementations.
-- **Quick Reference Tables:** Fast lookup for widget properties, lifecycle methods, and Dart syntax.
+- **Strict Approval Standard:** Content is compiled only after explicit student verification and approval.
+- **Syntax Focus:** Highlighting essential constructors, signatures, methods, and memory anchors.
+- **Common Gotchas:** Side-by-side buggy code vs. production-grade patterns.
+- **Quick Revision Reference:** Rapid lookup before production implementation.
 
 ---
 
-## 🚦 Learning Tracker & Curriculum
+## 🛠️ The 12-Week Learning & Verification Loop
 
-| # | Topic / Concept | Category | Status | Approved Date | Notes / Code |
-|---|----------------|----------|--------|---------------|--------------|
-| - | *Repository Initialized* | Setup | ✅ Completed | Initial Setup | Cover & TOC created |
-| 1 | *First Topic to be selected* | Pending | ⏳ Upcoming | — | — |
-
-*As new topics are studied, tested, and approved, this table and the master PDF will be continuously updated.*
-
----
-
-## 🛠️ The 6-Step Learning Methodology
-
-Every topic follows a rigorous 6-step cycle:
-1. **Understand the Topic:** Real-world necessity and high-level objective.
-2. **Teach the Concept:** Mechanism, parameters, internal mechanics, and distinctions from alternatives.
-3. **Code Examples:** Idiomatic Dart/Flutter examples with highlighted syntax and gotchas.
-4. **Real-World Application:** Production use-cases (e-commerce, auth, dashboards, APIs).
-5. **Knowledge Evaluation:** Practical exercises and comprehension checks.
-6. **Explicit Approval & Documentation:** Formal review, PDF compilation, and git commit.
+For every single week:
+1. **Overview & Assessment:** Outline objectives and assess current grasp.
+2. **Modular Concept Sessions:** One concept at a time with internal mechanics and syntax.
+3. **Targeted Coding Exercises:** Hands-on practice and memory reinforcement.
+4. **Mandatory Weekly Project:** Implementation guided with requirements and checklist.
+5. **Evaluation & Revision:** Code review, architecture review, and debugging assistance.
+6. **Explicit Approval & Sync:** Structured summary review, PDF compilation, and clean Git commit.
 
 ---
 
-## 🔗 Official References & Documentation
-- [Flutter Official Documentation](https://docs.flutter.dev/)
-- [Dart Official Language Guide](https://dart.dev/guides)
-- [Flutter API Reference](https://api.flutter.dev/)
-- [Pub.dev Package Repository](https://pub.dev/)
+## 🔗 Quick Links
+- 🗺️ **[Detailed 12-Week Syllabus (ROADMAP.md)](ROADMAP.md)**
+- 📚 **[Curated Resources & Documentation](resources/learning_resources.md)**
